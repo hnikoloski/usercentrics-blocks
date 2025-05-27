@@ -1,0 +1,1153 @@
+/**
+ * FAQ Block Styles
+ */
+
+// Screen reader only utility class for accessibility
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.usercentrics-faq {
+    margin: 2rem 0;
+
+    &__title {
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--usercentrics-text);
+        line-height: 1.3;
+
+        @media (max-width: 768px) {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__container {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e5e7eb;
+        padding: 0.5rem;
+    }
+
+    &__item {
+        border-bottom: 1px solid #f3f4f6;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &.is-open {
+            .usercentrics-faq__question {
+                background-color: #f9fafb;
+
+                .usercentrics-faq__icon {
+                    transform: rotate(45deg);
+                }
+            }
+
+            .usercentrics-faq__answer {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__question {
+        width: 100%;
+        padding: 1.5rem 2rem;
+        background: white;
+        border: none;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #111827;
+        transition: var(--usercentrics-transition);
+        line-height: 1.5;
+
+        &:hover {
+            background-color: #f9fafb;
+        }
+
+        &:focus {
+            outline: 2px solid var(--usercentrics-primary, #3b82f6);
+            outline-offset: -2px;
+            background-color: #f9fafb;
+        }
+
+        // High contrast mode support
+        @media (prefers-contrast: high) {
+            &:focus {
+                outline-width: 3px;
+                outline-color: #000;
+            }
+        }
+
+        @media (max-width: 768px) {
+            padding: 1.25rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+
+    &__question-text {
+        flex: 1;
+        margin-right: 1rem;
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        color: #6b7280;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        // Reduced motion support
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        svg {
+            display: block;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &__answer {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        // Reduced motion support
+        @media (prefers-reduced-motion: reduce) {
+            transition: max-height 0.15s ease;
+        }
+
+        &[hidden] {
+            display: block;
+        }
+
+        &.is-opening {
+            max-height: 1000px;
+        }
+
+        &.is-closing {
+            max-height: 0;
+        }
+    }
+
+    &__answer-content {
+        padding: 1.5rem 2rem;
+        background-color: white;
+        color: #4b5563;
+        line-height: 1.7;
+
+        p {
+            margin: 0 0 1rem 0;
+            font-size: 1rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        ul,
+        ol {
+            margin: 0 0 1rem 1.5rem;
+
+            li {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        strong {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        a {
+            color: var(--usercentrics-primary, #3b82f6);
+            text-decoration: underline;
+            font-weight: 500;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            &:focus {
+                outline: 2px solid var(--usercentrics-primary, #3b82f6);
+                outline-offset: 2px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            padding: 1.25rem 1.5rem;
+        }
+    }
+}
+
+// Alignment support
+.usercentrics-faq {
+
+    // Left alignment (default)
+    &.alignleft {
+        text-align: left;
+        margin-right: 2rem;
+        max-width: 50%;
+        float: left;
+
+        @media (max-width: 768px) {
+            float: none;
+            max-width: 100%;
+            margin-right: 0;
+        }
+    }
+
+    // Center alignment
+    &.aligncenter {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 800px;
+    }
+
+    // Right alignment
+    &.alignright {
+        text-align: left;
+        margin-left: 2rem;
+        max-width: 50%;
+        float: right;
+
+        @media (max-width: 768px) {
+            float: none;
+            max-width: 100%;
+            margin-left: 0;
+        }
+    }
+
+    // Wide alignment
+    &.alignwide {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+
+        @media (max-width: 1240px) {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+    }
+
+    // Full width alignment
+    &.alignfull {
+        max-width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        width: 100vw;
+
+        .usercentrics-faq__container {
+            border-radius: 0;
+            border-left: none;
+            border-right: none;
+        }
+
+        @media (max-width: 768px) {
+            .usercentrics-faq__container {
+                padding: 0.25rem;
+            }
+
+            .usercentrics-faq__question {
+                padding: 1rem 1.25rem;
+            }
+
+            .usercentrics-faq__answer-content {
+                padding: 1rem 1.25rem;
+            }
+        }
+    }
+}
+
+// Editor styles
+.wp-block-usercentrics-faq {
+    padding-top: 2rem; // Add space for tooltips at the top
+
+    .usercentrics-faq__item-editor {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+        background: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        // For the first item, position tooltips below instead of above
+        &:first-child {
+            .usercentrics-faq__control-button {
+                &::before {
+                    bottom: auto;
+                    top: 100%;
+                    margin-bottom: 0;
+                    margin-top: 0.5rem;
+                }
+
+                &::after {
+                    bottom: auto;
+                    top: 100%;
+                    border-top-color: transparent;
+                    border-bottom-color: #1f2937;
+                    margin-bottom: 0;
+                    margin-top: 0.125rem;
+                }
+
+                &--delete:hover::after {
+                    border-bottom-color: #dc2626;
+                    border-top-color: transparent;
+                }
+
+                // Right-side buttons in first item - position tooltip to avoid overflow
+                &:nth-last-child(-n+2) {
+                    &::before {
+                        left: auto;
+                        right: 50%;
+                        transform: translateX(50%);
+                    }
+
+                    &::after {
+                        left: auto;
+                        right: 50%;
+                        transform: translateX(50%);
+                        border-bottom-color: #1f2937;
+                    }
+                }
+
+                &--delete:nth-last-child(-n+2):hover::after {
+                    border-bottom-color: #dc2626;
+                }
+            }
+        }
+    }
+
+    .usercentrics-faq__editor-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 2.2rem;
+        border-bottom: 1px solid #f3f4f6;
+        background-color: #f9fafb;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .usercentrics-faq__editor-label {
+        font-weight: 600;
+        color: #374151;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .usercentrics-faq__item-controls {
+        display: flex;
+        gap: 0.25rem;
+
+        .usercentrics-faq__control-button {
+            min-width: 28px;
+            height: 28px;
+            padding: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #d1d5db;
+            background: white;
+            border-radius: 6px;
+            position: relative;
+            transition: all 0.2s ease;
+
+            // Tooltip styles
+            &::before {
+                content: attr(aria-label);
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #1f2937;
+                color: white;
+                padding: 0.5rem 0.75rem;
+                border-radius: 6px;
+                font-size: 0.75rem;
+                font-weight: 500;
+                white-space: nowrap;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.2s ease;
+                z-index: 1000;
+                margin-bottom: 0.5rem;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            // Tooltip arrow
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 4px solid transparent;
+                border-top-color: #1f2937;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.2s ease;
+                z-index: 1000;
+                margin-bottom: 0.125rem;
+            }
+
+            // Right-side buttons (move down and delete) - position tooltip to avoid overflow
+            &:nth-last-child(-n+2) {
+                &::before {
+                    left: auto;
+                    right: 50%;
+                    transform: translateX(50%);
+                }
+
+                &::after {
+                    left: auto;
+                    right: 50%;
+                    transform: translateX(50%);
+                }
+            }
+
+            &:hover {
+                background-color: #f3f4f6;
+                border-color: #9ca3af;
+
+                &::before,
+                &::after {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+
+            &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+
+                &:hover {
+                    background: white;
+                    border-color: #d1d5db;
+
+                    &::before,
+                    &::after {
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                }
+            }
+
+            &--delete {
+                color: #dc2626;
+                font-size: 16px;
+
+                &:hover {
+                    background-color: #dc2626;
+                    color: white;
+                    border-color: #dc2626;
+
+                    &::before {
+                        background: #dc2626;
+                    }
+
+                    &::after {
+                        border-top-color: #dc2626;
+                    }
+                }
+            }
+        }
+    }
+
+    .usercentrics-faq__answer-editor {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        background: white;
+        min-height: 200px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        padding: 0.5rem 1rem;
+
+        &:focus-within {
+            border-color: var(--usercentrics-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        &:hover {
+            border-color: #d1d5db;
+        }
+
+        .usercentrics-faq__answer-blocks {
+            padding: 1rem;
+
+
+            .block-editor-default-block-appender {
+                margin: 0;
+            }
+
+            .wp-block {
+                margin-top: 0;
+                margin-bottom: 0.5rem;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            // Fix spacing in lists
+            ul li,
+            ol li {
+                margin-bottom: 0.25rem;
+
+                p {
+                    margin: 0;
+                }
+            }
+
+            // Reduce paragraph spacing
+            p {
+                margin: 0 0 0.5rem 0;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .usercentrics-faq__question-wrapper,
+    .usercentrics-faq__answer-wrapper {
+        padding: 1.5rem;
+
+        @media (max-width: 768px) {
+            padding: 1.25rem;
+        }
+    }
+
+    .usercentrics-faq__question-wrapper {
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .usercentrics-faq__field-label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .usercentrics-faq__question-editor {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 1rem;
+        background: white;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        cursor: text;
+        font-weight: 600;
+        font-size: 1.125rem;
+        color: #111827;
+        line-height: 1.5;
+
+        &:focus,
+        &:focus-within {
+            outline: none;
+            border-color: var(--usercentrics-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        &:hover {
+            border-color: #d1d5db;
+        }
+
+        // Ensure the RichText content is properly styled
+        .rich-text {
+            min-height: inherit;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        // Style placeholder text
+        &[data-is-placeholder-visible="true"] {
+            color: #9ca3af;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 1rem;
+        }
+    }
+
+    // Classic WYSIWYG Editor Styling
+    .wp-editor-wrap {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        overflow: hidden;
+        background: white;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+        &:focus-within {
+            border-color: var(--usercentrics-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        &:hover {
+            border-color: #d1d5db;
+        }
+
+        // Editor tabs styling
+        .wp-editor-tools {
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0;
+
+            .wp-editor-tabs {
+                display: flex;
+                margin: 0;
+                padding: 0;
+
+                .wp-switch-editor {
+                    background: transparent;
+                    border: none;
+                    padding: 8px 16px;
+                    font-size: 13px;
+                    color: #666;
+                    cursor: pointer;
+                    border-radius: 0;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        background: #e5e7eb;
+                        color: #333;
+                    }
+
+                    &.switch-tmce {
+                        border-right: 1px solid #e5e7eb;
+                    }
+                }
+
+                .switch-tmce.active,
+                .switch-html.active {
+                    background: white;
+                    color: #333;
+                    font-weight: 600;
+                }
+
+                .tmce-active .switch-tmce,
+                .html-active .switch-html {
+                    background: white;
+                    color: #333;
+                    font-weight: 600;
+                }
+            }
+
+
+        }
+    }
+
+    .wp-editor-container {
+        .wp-editor-area {
+            border: none;
+            outline: none;
+            width: 100%;
+            min-height: 200px;
+            padding: 1rem;
+            font-family: inherit;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #4b5563;
+            resize: vertical;
+            background: white;
+
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
+        }
+    }
+
+    // TinyMCE toolbar styling
+    .mce-toolbar-grp {
+        border-bottom: 1px solid #e5e7eb;
+        background: #f9fafb;
+        padding: 4px;
+
+        .mce-toolbar {
+            .mce-btn-group {
+                margin: 2px;
+
+                .mce-btn {
+                    border: 1px solid transparent;
+                    background: transparent;
+                    border-radius: 3px;
+                    padding: 4px 6px;
+                    margin: 1px;
+
+                    &:hover {
+                        background: #e5e7eb;
+                        border-color: #d1d5db;
+                    }
+
+                    &.mce-active {
+                        background: var(--usercentrics-primary);
+                        color: white;
+                        border-color: var(--usercentrics-primary);
+                    }
+
+                    .mce-ico {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+
+    // TinyMCE content area
+    .mce-edit-area {
+        iframe {
+            min-height: 200px;
+            border: none;
+        }
+    }
+
+    // Rich Text Editor styling
+    .rich-text-editor {
+        min-height: 200px;
+        padding: 10px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        line-height: 1.6;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        p {
+            margin: 0 0 1em 0;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        a {
+            color: var(--usercentrics-primary);
+            text-decoration: underline;
+        }
+
+        code {
+            background-color: #f3f4f6;
+            padding: 0.125rem 0.25rem;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+            font-size: 0.875em;
+            color: #dc2626;
+        }
+
+        del {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        sub {
+            vertical-align: sub;
+            font-size: 0.75em;
+        }
+
+        sup {
+            vertical-align: super;
+            font-size: 0.75em;
+        }
+
+        // Style the answer content in the frontend
+        .usercentrics-faq__answer-content {
+            color: #4b5563;
+            line-height: 1.7;
+            font-size: 1rem;
+
+            // Style paragraphs within the answer content
+            p {
+                margin: 0 0 0.5rem 0;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            // Style for various formatting within answers
+            strong {
+                font-weight: 600;
+                color: #111827;
+            }
+
+            em {
+                font-style: italic;
+            }
+
+            a {
+                color: var(--usercentrics-primary);
+                text-decoration: underline;
+                font-weight: 500;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+            code {
+                background-color: #f3f4f6;
+                padding: 0.125rem 0.25rem;
+                border-radius: 3px;
+                font-family: 'SFMono-Regular', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+                font-size: 0.875em;
+                color: #dc2626;
+            }
+
+            del {
+                text-decoration: line-through;
+                opacity: 0.7;
+            }
+
+            sub {
+                vertical-align: sub;
+                font-size: 0.75em;
+            }
+
+            sup {
+                vertical-align: super;
+                font-size: 0.75em;
+            }
+
+            ul,
+            ol {
+                margin: 0 0 0.75rem 1.5rem;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                li {
+                    margin-bottom: 0.25rem;
+                    line-height: 1.7;
+
+                    // Remove default paragraph margins in list items
+                    p {
+                        margin: 0;
+                    }
+                }
+            }
+
+            blockquote {
+                margin: 0 0 1rem 0;
+                padding: 1rem;
+                border-left: 4px solid var(--usercentrics-primary);
+                background-color: #f9fafb;
+                font-style: italic;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            hr {
+                margin: 1.5rem 0;
+                border: none;
+                border-top: 1px solid #e5e7eb;
+            }
+        }
+
+        .usercentrics-faq__add-item {
+            margin-top: 1.5rem;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            background: linear-gradient(135deg, var(--usercentrics-primary) 0%, #0052a3 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 102, 204, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                transition: left 0.5s ease;
+            }
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 16px rgba(0, 102, 204, 0.3);
+                background: linear-gradient(135deg, #0052a3 0%, var(--usercentrics-primary) 100%);
+
+                &::before {
+                    left: 100%;
+                }
+            }
+
+            &:active {
+                transform: translateY(0);
+                box-shadow: 0 2px 8px rgba(0, 102, 204, 0.2);
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.3), 0 4px 16px rgba(0, 102, 204, 0.3);
+            }
+
+            // Add icon
+            &::after {
+                content: '+';
+                font-size: 1.25rem;
+                font-weight: bold;
+                margin-left: 0.5rem;
+                display: inline-block;
+                transition: transform 0.3s ease;
+                line-height: 1;
+            }
+
+            &:hover::after {
+                transform: rotate(90deg);
+            }
+        }
+
+        // High contrast mode support
+        @media (prefers-contrast: high) {
+            .usercentrics-faq {
+                &__container {
+                    border-width: 2px;
+                }
+
+                &__question:focus {
+                    outline-width: 3px;
+                }
+            }
+        }
+
+        // Reduced motion support
+        @media (prefers-reduced-motion: reduce) {
+            .usercentrics-faq {
+                &__question {
+                    transition: none; // Disable hover transitions
+                }
+
+                &__icon {
+                    transition: none; // Disable rotation animation
+                }
+
+                &__answer {
+                    transition: max-height 0.15s ease; // Keep a very fast slide, but reduce duration
+                }
+
+                // Disable editor button animations
+                .usercentrics-faq__control-button {
+                    transition: none;
+
+                    &::before,
+                    &::after {
+                        transition: none;
+                    }
+                }
+
+                .usercentrics-faq__add-item {
+                    transition: none;
+
+                    &::before,
+                    &::after {
+                        transition: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Frontend styles
+.usercentrics-faq__title {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    color: #111827;
+    font-size: 2rem;
+    line-height: 1.2;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.usercentrics-faq__container {
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+.usercentrics-faq__item {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.usercentrics-faq__question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    cursor: pointer;
+    text-align: left;
+    padding: 1.25rem 1.5rem;
+    border: none;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: #f9fafb;
+    }
+
+    &:focus {
+        outline: none;
+        background-color: #f9fafb;
+        box-shadow: inset 0 0 0 2px var(--usercentrics-primary, #3b82f6);
+    }
+
+    &[aria-expanded="true"] {
+        .usercentrics-faq__icon {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.usercentrics-faq__question-text {
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: #111827;
+    flex: 1;
+    padding-right: 1rem;
+
+    @media (max-width: 768px) {
+        font-size: 1rem;
+    }
+}
+
+.usercentrics-faq__icon {
+    flex-shrink: 0;
+    color: #6b7280;
+    transition: transform 0.3s ease;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.usercentrics-faq__answer {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+
+    &[hidden] {
+        display: block;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    &:not([hidden]) {
+        max-height: 1000px;
+        /* Arbitrary large value */
+        padding: 0 1.5rem 1.5rem 1.5rem;
+    }
+}
+
+.usercentrics-faq__answer-content {
+    color: #4b5563;
+    font-size: 1rem;
+    line-height: 1.6;
+
+    p,
+    ul,
+    ol {
+        margin-top: 0;
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    ul,
+    ol {
+        padding-left: 1.5rem;
+    }
+
+    a {
+        color: var(--usercentrics-primary, #3b82f6);
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

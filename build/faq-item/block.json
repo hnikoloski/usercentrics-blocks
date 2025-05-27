@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block-editor/block.json",
+  "apiVersion": 3,
+  "name": "usercentrics/faq-item",
+  "version": "1.0.0",
+  "title": "FAQ Item",
+  "category": "usercentrics",
+  "icon": "format-chat",
+  "description": "A single FAQ item with question and answer for use within the FAQ block.",
+  "textdomain": "usercentrics-blocks",
+  "parent": [
+    "usercentrics/faq"
+  ],
+  "attributes": {
+    "question": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false,
+    "multiple": true,
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "padding": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:../editor.css",
+  "style": "file:../style.css"
+}

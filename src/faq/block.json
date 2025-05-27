@@ -1,0 +1,94 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block-editor/block.json",
+    "apiVersion": 3,
+    "name": "usercentrics/faq",
+    "version": "1.0.0",
+    "title": "FAQ Section",
+    "category": "usercentrics",
+    "icon": "editor-help",
+    "description": "A dynamic FAQ component with expandable question and answer pairs, optimized for accessibility and SEO.",
+    "keywords": [
+        "faq",
+        "questions",
+        "answers",
+        "accordion"
+    ],
+    "textdomain": "usercentrics-blocks",
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": "Frequently Asked Questions"
+        },
+        "allowMultipleOpen": {
+            "type": "boolean",
+            "default": false
+        },
+        "showTitle": {
+            "type": "boolean",
+            "default": true
+        },
+        "titleLevel": {
+            "type": "number",
+            "default": 2
+        }
+    },
+    "supports": {
+        "html": false,
+        "anchor": true,
+        "align": [
+            "left",
+            "center",
+            "right",
+            "wide",
+            "full"
+        ],
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "color": {
+            "background": true,
+            "text": true
+        }
+    },
+    "editorScript": "file:./index.js",
+    "script": "file:./view.js",
+    "editorStyle": "file:../editor.css",
+    "style": "file:../style.css",
+    "example": {
+        "attributes": {
+            "title": "Sample FAQ",
+            "allowMultipleOpen": true
+        },
+        "innerBlocks": [
+            {
+                "name": "usercentrics/faq-item",
+                "attributes": {
+                    "question": "What is Usercentrics?"
+                },
+                "innerBlocks": [
+                    {
+                        "name": "core/paragraph",
+                        "attributes": {
+                            "content": "Usercentrics is a leading consent management platform that helps businesses comply with privacy regulations."
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "usercentrics/faq-item",
+                "attributes": {
+                    "question": "How does the free trial work?"
+                },
+                "innerBlocks": [
+                    {
+                        "name": "core/paragraph",
+                        "attributes": {
+                            "content": "You can start with our 14-day free trial without providing a credit card. All features are available during the trial period."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

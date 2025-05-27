@@ -1,0 +1,40 @@
+{
+    "name": "usercentrics-blocks",
+    "version": "1.0.0",
+    "description": "Custom Gutenberg blocks for FAQ component",
+    "main": "build/index.js",
+    "scripts": {
+        "build": "wp-scripts build && npm run build:css",
+        "build:css": "sass src/faq/style.scss build/style.css --style=compressed && sass src/faq/style.scss build/editor.css --style=compressed",
+        "dev": "wp-scripts start",
+        "lint:css": "wp-scripts lint-style",
+        "lint:js": "wp-scripts lint-js",
+        "format": "wp-scripts format",
+        "packages-update": "wp-scripts packages-update",
+        "package": "npm run build && npm run package:prepare",
+        "package:prepare": "node -e \"const fs=require('fs'); if(fs.existsSync('dist')) fs.rmSync('dist',{recursive:true}); fs.mkdirSync('dist'); console.log('Created dist folder for packaging');\"",
+        "release": "npm run package && echo 'Plugin built and ready for distribution. Manually zip the following files: build/, src/, *.php, README.md, package.json, webpack.config.js'"
+    },
+    "keywords": [
+        "wordpress",
+        "gutenberg",
+        "blocks",
+        "faq",
+        "carousel",
+        "accessibility",
+        "seo"
+    ],
+    "author": "Usercentrics",
+    "license": "GPL-2.0-or-later",
+    "devDependencies": {
+        "@wordpress/scripts": "^26.19.0",
+        "sass": "^1.89.0"
+    },
+    "dependencies": {
+        "@wordpress/block-editor": "^12.20.0",
+        "@wordpress/blocks": "^12.29.0",
+        "@wordpress/components": "^25.16.0",
+        "@wordpress/element": "^5.29.0",
+        "@wordpress/i18n": "^4.52.0"
+    }
+}
