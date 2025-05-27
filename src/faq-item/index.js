@@ -152,7 +152,8 @@ function Save({ attributes }) {
         className: 'usercentrics-faq__item',
         'data-faq-item': true,
         itemScope: true,
-        itemType: 'https://schema.org/Question'
+        itemType: 'https://schema.org/Question',
+        itemProp: 'mainEntity'
     });
 
     return (

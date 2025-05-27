@@ -125,7 +125,6 @@ function Save({ attributes }) {
             <div
                 className="usercentrics-faq__container"
                 data-allow-multiple={allowMultipleOpen ? 'true' : 'false'}
-                itemProp="mainEntity"
             >
                 <InnerBlocks.Content />
             </div>
