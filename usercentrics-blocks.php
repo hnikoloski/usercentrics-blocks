@@ -5,7 +5,8 @@
  * Plugin URI: https://usercentrics.com
  * Description: Custom Gutenberg blocks for FAQ component with accessibility and SEO optimization.
  * Version: 1.0.0
- * Author: Usercentrics
+ * Author: hNikoloski
+ * Author URI: https://hnikoloski.com
  * License: GPL v2 or later
  * Text Domain: usercentrics-blocks
  * Domain Path: /languages
